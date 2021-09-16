@@ -24,3 +24,9 @@ jobs:
       run: ls $ANDROID_SDK_ROOT/platforms
     - name: Build with Ant
       run: ant compile_for_android -f build/build.xml
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.2.4
+      with:
+          path: bin/
+          if-no-files-found: error
+          retention-days: 1
