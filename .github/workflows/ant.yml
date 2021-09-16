@@ -23,7 +23,7 @@ jobs:
     - name: list some files
       run: ls $ANDROID_SDK_ROOT/platforms
     - name: Build with Ant
-      run: ant compile_for_android -f build/build.xml
+      run: ant tarsos_dsp_android_library -f build/build.xml
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.2.4
       with:
