@@ -8,7 +8,8 @@
 	
 	<!-- If you want to build an Android TarsosDSP jar file, please download the Android SDK and 
 	     Fix   -->
-	<property name="android_jar" value="/opt/Android/android-sdk-linux/platforms/android-22/android.jar" />
+	<property environment="env"/>
+	<property name="android_jar" value="${env.ANDROID_SDK_ROOT}/platforms/android-30/android.jar" />
 
 	<!-- run the ant timestamp task -->
 	<tstamp />
