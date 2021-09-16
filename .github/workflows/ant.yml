@@ -23,4 +23,4 @@ jobs:
     - name: list some files
       run: ls $ANDROID_SDK_ROOT/platforms
     - name: Build with Ant
-      run: ant -buildfile build/build.xml tarsos_dsp_library && ls bin/
+      run: ant compile_for_android -f build/build.xml
