@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Build;
 import android.util.Log;
+import be.tarsos.dsp.util.FFMPEGLocator;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -44,6 +45,11 @@ import java.io.OutputStream;
 public class AndroidFFMPEGLocator {
 
     private static final String TAG = "AndroidFFMPEGLocator";
+
+    public static void init(Context context) {
+        File ffmpegDirectory = new File(context.getApplicationInfo().nativeLibraryDir);
+        FFMPEGLocator.setFfmpegDirectory(ffmpegDirectory);
+    }
 
     public AndroidFFMPEGLocator(Context context){
         CPUArchitecture architecture = getCPUArchitecture();

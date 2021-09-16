@@ -35,6 +35,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import be.tarsos.dsp.util.FFMPEGDownloader;
+import be.tarsos.dsp.util.FFMPEGLocator;
 
 /**
  * <p>
@@ -107,13 +108,13 @@ public class PipeDecoder {
 			pipeCommand = "avconv" + arguments;
 		}else {
 			if(isAndroid()) {
-				String tempDirectory = System.getProperty("java.io.tmpdir");
+				File tempDirectory = FFMPEGLocator.getFfmpegDirectory();
 				printErrorstream=true;
 				File f = new File(tempDirectory, "ffmpeg");
 				if (f.exists() && f.length() > 1000000 && f.canExecute()) {
 					decoderBinaryAbsolutePath = f.getAbsolutePath();
 				} else {
-					LOG.severe("Could not find an ffmpeg binary for your Android system. Did you forget calling: 'new AndroidFFMPEGLocator(this);' ?");
+					LOG.severe("Could not find an ffmpeg binary for your Android system. Did you forget calling: 'AndroidFFMPEGLocator.init(Context);' ?");
 					LOG.severe("Tried to unpack a statically compiled ffmpeg binary for your architecture to: " + f.getAbsolutePath());
 				}
 			}else{
